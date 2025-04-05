@@ -1,14 +1,15 @@
 package com.misury.util;
 
-import com.misury.wrapper.FuzzyQueryBuilderWrapper;
-import com.misury.wrapper.NestedQueryBuilderWrapper;
-import com.misury.wrapper.RangeQueryBuilderWrapper;
-import com.misury.wrapper.WildcardQueryBuilderWrapper;
+import com.misury.wrapper.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.lucene.search.join.ScoreMode;
 import org.elasticsearch.common.unit.Fuzziness;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.TermQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.query.MatchAllQueryBuilder;
+import org.elasticsearch.search.aggregations.AggregationBuilders;
+import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
 
 /**
  * Elasticsearch查询工具类
@@ -78,7 +79,7 @@ public class ElasticsearchQueryUtils {
      * @throws IllegalArgumentException 当路径或查询为空时抛出
      */
     public static NestedQueryBuilderWrapper nested(String path, QueryBuilder query) {
-        return new NestedQueryBuilderWrapper(path, query, null);
+        return new NestedQueryBuilderWrapper(path, query, ScoreMode.None);
     }
 
     /**
@@ -200,5 +201,41 @@ public class ElasticsearchQueryUtils {
         if (value == null) {
             throw new IllegalArgumentException("查询值不能为空");
         }
+    }
+
+    /**
+     * 创建布尔查询构建器
+     * 用于组合多个查询条件，支持must、should、must_not和filter子句
+     *
+     * @return BoolQueryBuilderWrapper 布尔查询构建器包装类
+     * @example
+     *   bool()
+     *     .must(term("status", "active"))
+     *     .should(range("score").from(4.0))
+     *     .filter(range("date").from("2024-01-01"))
+     *     .build();
+     */
+    public static BoolQueryBuilderWrapper bool() {
+        return new BoolQueryBuilderWrapper();
+    }
+
+    /**
+     * 创建匹配所有文档的查询
+     *
+     * @return MatchAllQueryBuilder 匹配所有查询构建器
+     */
+    public static MatchAllQueryBuilder matchAll() {
+        return QueryBuilders.matchAllQuery();
+    }
+
+    /**
+     * 创建terms聚合查询构建器
+     *
+     * @param name 聚合名称
+     * @return TermsAggregationBuilder terms聚合构建器
+     */
+    public static TermsAggregationBuilder terms(String name) {
+        validateValue(name);
+        return AggregationBuilders.terms(name);
     }
 }
