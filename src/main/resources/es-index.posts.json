@@ -1,1 +1,102 @@
-[{"took":32,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":3,"relation":"eq"},"max_score":1,"hits":[{"_index":"es-index.posts","_type":"_doc","_id":"sLKfA5YBMWjCLtlb9058","_score":1,"_source":{"field1":"测试文档1","createTime":"2024-01-01","appInfo":[{"custNo":"C001","contNo":"CONT001","custName":"张三"},{"custNo":"C002","contNo":"CONT002","custName":"李四"}],"field2":"示例内容1","idNoList":["ID001","ID002"]}},{"_index":"es-index.posts","_type":"_doc","_id":"sbKfA5YBMWjCLtlb9058","_score":1,"_source":{"field1":"Test Document","createTime":"2024-01-15","appInfo":[{"custNo":"C003","contNo":"CONT003","custName":"John Smith"},{"custNo":"C004","contNo":"CONT004","custName":"Mary Johnson"}],"field2":"Example Content","idNoList":["ID003","ID004"]}},{"_index":"es-index.posts","_type":"_doc","_id":"srKfA5YBMWjCLtlb9058","_score":1,"_source":{"field1":"测试文档3","createTime":"2024-02-01","appInfo":[{"custNo":"C012345","contNo":"CONT005","custName":"王五"},{"custNo":"C067890","contNo":"CONT006","custName":"赵六"}],"field2":"模糊搜索测试","idNoList":["ID005","ID006"]}}]}}]
+[
+  {
+    "took": 32,
+    "timed_out": false,
+    "_shards": {
+      "total": 5,
+      "successful": 5,
+      "skipped": 0,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 3,
+        "relation": "eq"
+      },
+      "max_score": 1,
+      "hits": [
+        {
+          "_index": "es-index.posts",
+          "_type": "_doc",
+          "_id": "sLKfA5YBMWjCLtlb9058",
+          "_score": 1,
+          "_source": {
+            "field1": "测试文档1",
+            "createTime": "2024-01-01",
+            "appInfo": [
+              {
+                "custNo": "C001",
+                "contNo": "CONT001",
+                "custName": "张三"
+              },
+              {
+                "custNo": "C002",
+                "contNo": "CONT002",
+                "custName": "李四"
+              }
+            ],
+            "field2": "示例内容1",
+            "idNoList": [
+              "ID001",
+              "ID002"
+            ]
+          }
+        },
+        {
+          "_index": "es-index.posts",
+          "_type": "_doc",
+          "_id": "sbKfA5YBMWjCLtlb9058",
+          "_score": 1,
+          "_source": {
+            "field1": "Test Document",
+            "createTime": "2024-01-15",
+            "appInfo": [
+              {
+                "custNo": "C003",
+                "contNo": "CONT003",
+                "custName": "John Smith"
+              },
+              {
+                "custNo": "C004",
+                "contNo": "CONT004",
+                "custName": "Mary Johnson"
+              }
+            ],
+            "field2": "Example Content",
+            "idNoList": [
+              "ID003",
+              "ID004"
+            ]
+          }
+        },
+        {
+          "_index": "es-index.posts",
+          "_type": "_doc",
+          "_id": "srKfA5YBMWjCLtlb9058",
+          "_score": 1,
+          "_source": {
+            "field1": "测试文档3",
+            "createTime": "2024-02-01",
+            "appInfo": [
+              {
+                "custNo": "C012345",
+                "contNo": "CONT005",
+                "custName": "王五"
+              },
+              {
+                "custNo": "C067890",
+                "contNo": "CONT006",
+                "custName": "赵六"
+              }
+            ],
+            "field2": "模糊搜索测试",
+            "idNoList": [
+              "ID005",
+              "ID006"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]
